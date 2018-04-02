@@ -1,4 +1,4 @@
-package rocketmq.rocketmq;
+package rocketmq.rocketmq.quickstart;
   
 import com.alibaba.rocketmq.client.consumer.DefaultMQPushConsumer;  
 import com.alibaba.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;  

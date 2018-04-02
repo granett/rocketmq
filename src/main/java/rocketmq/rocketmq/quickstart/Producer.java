@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package rocketmq.rocketmq;
+package rocketmq.rocketmq.quickstart;
 
 import com.alibaba.rocketmq.client.exception.MQClientException;
 import com.alibaba.rocketmq.client.producer.DefaultMQProducer;
@@ -33,6 +33,7 @@ public class Producer {
             try {
             	//Message(String topic, String tags, String keys, byte[] body)
                 Message msg = new Message("TopicTest","TagA","OrderID188",("Hello world"+i).getBytes(RemotingHelper.DEFAULT_CHARSET));
+                
                 SendResult sendResult = producer.send(msg);
                 System.out.println(sendResult.toString());
             } catch (Exception e) {
