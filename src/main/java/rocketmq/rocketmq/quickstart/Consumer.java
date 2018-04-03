@@ -22,7 +22,7 @@ public class Consumer {
         consumer.registerMessageListener(new MessageListenerConcurrently() {  
   
             public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs,ConsumeConcurrentlyContext context) {  
-                System.out.println(Thread.currentThread().getName() + " 收到新消息: " + msgs);  
+                System.out.println(Thread.currentThread().getName() + " 收到新消息: ");  
                 for(MessageExt me:msgs){  
                     try {  
                         System.out.println(new String(me.getBody(),"utf-8"));  
