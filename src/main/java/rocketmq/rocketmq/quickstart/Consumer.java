@@ -1,20 +1,19 @@
 package rocketmq.rocketmq.quickstart;
   
-import com.alibaba.rocketmq.client.consumer.DefaultMQPushConsumer;  
-import com.alibaba.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;  
-import com.alibaba.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;  
-import com.alibaba.rocketmq.client.consumer.listener.MessageListenerConcurrently;  
-import com.alibaba.rocketmq.client.exception.MQClientException;  
-import com.alibaba.rocketmq.common.consumer.ConsumeFromWhere;  
-import com.alibaba.rocketmq.common.message.MessageExt;  
-  
-import java.io.UnsupportedEncodingException;  
-import java.util.List;  
+import java.io.UnsupportedEncodingException;
+import java.util.List;
+import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
+import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
+import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
+import org.apache.rocketmq.client.consumer.listener.MessageListenerConcurrently;
+import org.apache.rocketmq.client.exception.MQClientException;
+import org.apache.rocketmq.common.consumer.ConsumeFromWhere;
+import org.apache.rocketmq.common.message.MessageExt;  
   
 public class Consumer {  
   
     public static void main(String[] args) throws InterruptedException, MQClientException {  
-        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("please_rename_unique_group_name_4");  
+        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("ConsumerGroupName");  
         consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);  
         consumer.setNamesrvAddr("192.168.1.205:9876");  
           
@@ -22,8 +21,7 @@ public class Consumer {
   
         consumer.registerMessageListener(new MessageListenerConcurrently() {  
   
-            public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs,  
-                                                            ConsumeConcurrentlyContext context) {  
+            public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs,ConsumeConcurrentlyContext context) {  
                 System.out.println(Thread.currentThread().getName() + " 收到新消息: " + msgs);  
                 for(MessageExt me:msgs){  
                     try {  
