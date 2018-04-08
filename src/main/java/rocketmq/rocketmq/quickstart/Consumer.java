@@ -3,6 +3,7 @@ package rocketmq.rocketmq.quickstart;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
+import org.apache.rocketmq.client.consumer.MessageSelector;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
 import org.apache.rocketmq.client.consumer.listener.MessageListenerConcurrently;
@@ -18,7 +19,6 @@ public class Consumer {
         consumer.setNamesrvAddr("192.168.1.205:9876");  
           
         consumer.subscribe("TopicTest", "*");  
-  
         consumer.registerMessageListener(new MessageListenerConcurrently() {  
   
             public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs,ConsumeConcurrentlyContext context) {  
